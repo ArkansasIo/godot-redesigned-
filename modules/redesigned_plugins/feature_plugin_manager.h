@@ -5,7 +5,10 @@
 #pragma once
 
 #include "core/object/object.h"
+#include "core/templates/hash_map.h"
 #include "core/templates/vector.h"
+#include "core/variant/array.h"
+#include "core/variant/dictionary.h"
 
 #include "feature_plugin.h"
 
