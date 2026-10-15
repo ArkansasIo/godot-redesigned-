@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="FeaturePluginManager" inherits="Object" version="4.6">
+	<brief_description>Registry and lifecycle manager for redesigned engine feature plugins.</brief_description>
+	<description>
+		FeaturePluginManager stores feature plugins, orders them by priority, controls
+		their lifecycle, and broadcasts named feature events. It is exposed as the
+		engine singleton FeaturePluginManager.
+	</description>
+	<methods>
+		<method name="register_plugin">
+			<param index="0" name="plugin" type="FeaturePlugin" />
+			<return type="bool" />
+		</method>
+		<method name="unregister_plugin">
+			<param index="0" name="plugin_id" type="StringName" />
+			<return type="bool" />
+		</method>
+		<method name="has_plugin">
+			<param index="0" name="plugin_id" type="StringName" />
+			<return type="bool" />
+		</method>
+		<method name="get_plugin">
+			<param index="0" name="plugin_id" type="StringName" />
+			<return type="FeaturePlugin" />
+		</method>
+		<method name="get_plugin_ids">
+			<return type="Array" />
+		</method>
+		<method name="get_plugins">
+			<return type="Array" />
+		</method>
+		<method name="enable_plugin">
+			<param index="0" name="plugin_id" type="StringName" />
+			<return type="bool" />
+		</method>
+		<method name="disable_plugin">
+			<param index="0" name="plugin_id" type="StringName" />
+			<return type="bool" />
+		</method>
+		<method name="is_plugin_enabled">
+			<param index="0" name="plugin_id" type="StringName" />
+			<return type="bool" />
+		</method>
+		<method name="initialize_plugins" />
+		<method name="shutdown_plugins" />
+		<method name="process_plugins">
+			<param index="0" name="delta" type="float" />
+		</method>
+		<method name="dispatch_event">
+			<param index="0" name="event" type="StringName" />
+			<param index="1" name="payload" type="Dictionary" />
+		</method>
+	</methods>
+	<signals>
+		<signal name="plugin_registered">
+			<param index="0" name="plugin_id" type="StringName" />
+		</signal>
+		<signal name="plugin_unregistered">
+			<param index="0" name="plugin_id" type="StringName" />
+		</signal>
+		<signal name="plugin_enabled">
+			<param index="0" name="plugin_id" type="StringName" />
+		</signal>
+		<signal name="plugin_disabled">
+			<param index="0" name="plugin_id" type="StringName" />
+		</signal>
+	</signals>
+</class>
