@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "core/io/resource.h"
 #include "core/object/ref_counted.h"
+#include "core/variant/dictionary.h"
 
 class FeaturePlugin : public RefCounted {
 	GDCLASS(FeaturePlugin, RefCounted);
@@ -45,9 +45,8 @@ public:
 	void set_enabled(bool p_enabled);
 	bool is_enabled() const;
 
-	// These methods intentionally dispatch through Object::call(), allowing
-	// GDScript/C# plugins to override the lifecycle methods without requiring
-	// another native class for every feature.
+	// Called through Object::call() by FeaturePluginManager, so a GDScript
+	// implementation can override these methods without native glue code.
 	virtual void initialize();
 	virtual void shutdown();
 	virtual void process(double p_delta);
