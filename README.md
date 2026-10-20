@@ -1,76 +1,65 @@
-# Godot Engine
+# Godot Redesigned
 
-<p align="center">
-  <a href="https://godotengine.org">
-    <img src="misc/logo/logo_outlined.svg" width="400" alt="Godot Engine logo">
-  </a>
-</p>
+This repository is a fork of the [Godot Engine](https://github.com/godotengine/godot) source tree. It preserves the upstream build system and source layout while tracking project-specific redesign work.
 
-## 2D and 3D cross-platform game engine
+## Project status
 
-**[Godot Engine](https://godotengine.org) is a feature-packed, cross-platform
-game engine to create 2D and 3D games from a unified interface.** It provides a
-comprehensive set of [common tools](https://godotengine.org/features), so that
-users can focus on making games without having to reinvent the wheel. Games can
-be exported with one click to a number of platforms, including the major desktop
-platforms (Linux, macOS, Windows), mobile platforms (Android, iOS), as well as
-Web-based platforms and [consoles](https://godotengine.org/consoles).
+- **Upstream:** [godotengine/godot](https://github.com/godotengine/godot)
+- **Default branch:** `master`
+- **Engine version metadata:** see [version.py](version.py)
+- **License:** MIT; see [LICENSE.txt](LICENSE.txt) and [COPYRIGHT.txt](COPYRIGHT.txt)
 
-## Free, open source and community-driven
+This README describes the fork and its contribution workflow. It does not imply that custom engine changes or release binaries have been validated.
 
-Godot is completely free and open source under the very permissive [MIT license](https://godotengine.org/license).
-No strings attached, no royalties, nothing. The users' games are theirs, down
-to the last line of engine code. Godot's development is fully independent and
-community-driven, empowering users to help shape their engine to match their
-expectations. It is supported by the [Godot Foundation](https://godot.foundation/)
-not-for-profit.
+## Build the engine
 
-Before being open sourced in [February 2014](https://github.com/godotengine/godot/commit/0b806ee0fc9097fa7bda7ac0109191c9c5e0a1ac),
-Godot had been developed by [Juan Linietsky](https://github.com/reduz) and
-[Ariel Manzur](https://github.com/punto-) for several years as an in-house
-engine, used to publish several work-for-hire titles.
+Godot is built from source using SCons. Always follow the [official compiling guide](https://docs.godotengine.org/en/latest/engine_details/development/compiling/).
 
-![Screenshot of a 3D scene in the Godot Engine editor](https://raw.githubusercontent.com/godotengine/godot-design/master/screenshots/editor_tps_demo_1920x1080.jpg)
+Typical setup after installing the platform prerequisites and SCons:
 
-## Getting the engine
+```sh
+# Inspect available build options first.
+python -c "import SCons; print('SCons', SCons.__version__)"
+scons --help
 
-### Binary downloads
+# Example editor build (choose options appropriate for your platform).
+scons platform=linuxbsd target=editor
+```
 
-Official binaries for the Godot editor and the export templates can be found
-[on the Godot website](https://godotengine.org/download).
+The example command is for Linux/BSD environments; platform names and prerequisites differ. Build output is normally written beneath `bin/`, which is ignored by Git.
 
-### Compiling from source
+## Repository areas
 
-[See the official docs](https://docs.godotengine.org/en/latest/engine_details/development/compiling)
-for compilation instructions for every supported platform.
+| Path | Purpose |
+| --- | --- |
+| `.github/workflows/` | Upstream platform build and static-check workflows |
+| `core/`, `servers/`, `scene/`, `editor/` | Engine implementation |
+| `platform/` | Platform-specific code and integrations |
+| `modules/` | Engine modules |
+| `tests/` | Automated tests and test data |
+| `thirdparty/` | Third-party dependencies and their license notices |
+| `doc/` | Engine documentation sources |
 
-## Community and contributing
+## Contribution workflow
 
-Godot is not only an engine but an ever-growing community of users and engine
-developers. The main community channels are listed [on the homepage](https://godotengine.org/community).
+1. Create a focused branch for each redesign or engine change.
+2. Keep changes isolated from unrelated upstream updates.
+3. Run the relevant static checks and tests for the modified subsystem.
+4. Attach reproduction steps, platform details, build options, and logs to bug reports.
+5. Review third-party license obligations before adding or replacing dependencies.
 
-The best way to get in touch with the core engine developers is to join the
-[Godot Contributors Chat](https://chat.godotengine.org).
+## GitHub Pages
 
-To get started contributing to the project, see the [contributing guide](CONTRIBUTING.md).
-This document also includes guidelines for reporting bugs.
+The engine source repository is not itself a deployable website. If GitHub Pages is enabled for this repository, publish a separate project overview from a dedicated folder or branch rather than attempting to render the C++ source tree as a site. Keep engine builds and web-site deployment as separate workflows.
 
-## Documentation and demos
+## Upstream resources
 
-The official documentation is hosted on [Read the Docs](https://docs.godotengine.org).
-It is maintained by the Godot community in its own [GitHub repository](https://github.com/godotengine/godot-docs).
+- [Godot Engine](https://godotengine.org/)
+- [Official documentation](https://docs.godotengine.org/)
+- [Compiling from source](https://docs.godotengine.org/en/latest/engine_details/development/compiling/)
+- [Contributing guide](CONTRIBUTING.md)
+- [MIT license](LICENSE.txt)
 
-The [class reference](https://docs.godotengine.org/en/latest/classes/)
-is also accessible from the Godot editor.
+---
 
-We also maintain official demos in their own [GitHub repository](https://github.com/godotengine/godot-demo-projects)
-as well as the [Asset Store](https://store.godotengine.org/).
-
-There are also a number of other
-[learning resources](https://docs.godotengine.org/en/latest/community/tutorials.html)
-provided by the community, such as text and video tutorials, demos, etc.
-Consult the [community channels](https://godotengine.org/community)
-for more information.
-
-[![Code Triagers Badge](https://www.codetriage.com/godotengine/godot/badges/users.svg)](https://www.codetriage.com/godotengine/godot)
-[![Translate on Weblate](https://hosted.weblate.org/widgets/godot-engine/-/godot/svg-badge.svg)](https://hosted.weblate.org/engage/godot-engine/?utm_source=widget)
+This fork is independently maintained by its repository owner. It is not an official Godot Engine release unless explicitly stated by the maintainers.
