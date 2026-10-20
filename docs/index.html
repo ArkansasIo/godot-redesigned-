@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101821">
+  <meta name="description" content="Project overview, development resources, and roadmap for the Godot Redesigned engine fork.">
+  <title>Godot Redesigned — Project Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Godot Redesigned home">
+      <span class="brand-mark" aria-hidden="true">G</span>
+      <span>GODOT <strong>REDESIGNED</strong></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#overview">Overview</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#resources">Resources</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">OPEN-SOURCE ENGINE FORK</p>
+      <h1>Build boldly.<br><span>Design deliberately.</span></h1>
+      <p class="hero-copy">A focused project hub for documenting, planning, and validating redesign work built on the Godot Engine source tree.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://github.com/ArkansasIo/godot-redesigned-">View repository <span aria-hidden="true">↗</span></a>
+        <a class="button secondary" href="https://docs.godotengine.org/en/latest/engine_details/development/compiling/">Build guide</a>
+      </div>
+      <p class="notice">This site is project documentation, not an official Godot Engine site or a downloadable engine release.</p>
+    </section>
+
+    <section id="overview" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">01 / OVERVIEW</p>
+        <h2>A source-first approach</h2>
+        <p>Keep changes traceable, builds reproducible, and redesign decisions understandable.</p>
+      </div>
+      <div class="card-grid">
+        <article class="info-card"><span class="number">01</span><h3>Upstream aware</h3><p>Track the origin of changes and keep divergence intentional and reviewable.</p></article>
+        <article class="info-card"><span class="number">02</span><h3>Testable by design</h3><p>Pair behavior changes with regression coverage and clear evidence.</p></article>
+        <article class="info-card"><span class="number">03</span><h3>Cross-platform minded</h3><p>Consider input, display scaling, rendering, and platform differences early.</p></article>
+      </div>
+    </section>
+
+    <section id="architecture" class="section architecture">
+      <div class="section-heading">
+        <p class="eyebrow">02 / ARCHITECTURE</p>
+        <h2>Map the engine layers</h2>
+        <p>Use the established project structure to understand where changes belong.</p>
+      </div>
+      <div class="architecture-list">
+        <div><code>core/</code><span>Foundation types and runtime utilities</span></div>
+        <div><code>scene/</code><span>Nodes, scenes, and gameplay-facing systems</span></div>
+        <div><code>editor/</code><span>Authoring interface and editor tools</span></div>
+        <div><code>servers/</code><span>Rendering and engine services</span></div>
+        <div><code>platform/</code><span>Platform-specific integrations</span></div>
+        <div><code>tests/</code><span>Automated regression coverage</span></div>
+      </div>
+      <p class="text-link"><a href="../project_docs/ARCHITECTURE.md">Read architecture notes →</a></p>
+    </section>
+
+    <section id="roadmap" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">03 / ROADMAP</p>
+        <h2>Improve in measured steps</h2>
+        <p>These phases are proposed work, not a claim that the features have shipped.</p>
+      </div>
+      <div class="timeline">
+        <article><span>PHASE 01</span><h3>Baseline</h3><p>Document the upstream base, toolchain, and current build/test status.</p></article>
+        <article><span>PHASE 02</span><h3>Design system</h3><p>Define UX goals, accessibility requirements, tokens, and validation criteria.</p></article>
+        <article><span>PHASE 03</span><h3>Implementation</h3><p>Deliver isolated patches with regression tests and performance measurements.</p></article>
+        <article><span>PHASE 04</span><h3>Release readiness</h3><p>Validate platforms, licensing, documentation, and reproducible artifacts.</p></article>
+      </div>
+      <p class="text-link"><a href="../project_docs/ROADMAP.md">Open full roadmap →</a></p>
+    </section>
+
+    <section id="resources" class="section resources">
+      <div class="section-heading">
+        <p class="eyebrow">04 / RESOURCES</p>
+        <h2>Start with trusted references</h2>
+        <p>Build and contribution guidance should come from the current upstream documentation.</p>
+      </div>
+      <div class="resource-links">
+        <a href="https://github.com/ArkansasIo/godot-redesigned-"><span>Repository</span><strong>Source, issues, and changes ↗</strong></a>
+        <a href="https://docs.godotengine.org/en/latest/engine_details/development/compiling/"><span>Build instructions</span><strong>Official compiling guide ↗</strong></a>
+        <a href="https://docs.godotengine.org/"><span>Documentation</span><strong>Godot documentation ↗</strong></a>
+        <a href="../project_docs/TESTING.md"><span>Quality</span><strong>Testing strategy →</strong></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Godot Redesigned is an independently maintained fork. Godot Engine is a project of its respective contributors.</p>
+    <p><a href="https://github.com/godotengine/godot">Upstream Godot Engine ↗</a></p>
+  </footer>
+</body>
+</html>
