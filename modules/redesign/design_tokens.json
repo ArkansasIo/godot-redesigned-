@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "colors": {
+    "background": "#0B1118",
+    "surface": "#121C26",
+    "surface_alt": "#172533",
+    "border": "#293B4B",
+    "text": "#EDF4FA",
+    "text_muted": "#A0B1C0",
+    "accent": "#65D7D0",
+    "accent_strong": "#A2FFF0",
+    "warning": "#F4C95D",
+    "danger": "#F47C7C",
+    "success": "#78D69A"
+  },
+  "spacing": {
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 20,
+    "xl": 28,
+    "xxl": 40
+  },
+  "radius": {
+    "small": 6,
+    "medium": 10,
+    "large": 14
+  },
+  "motion": {
+    "fast_ms": 100,
+    "normal_ms": 180,
+    "slow_ms": 300,
+    "reduced_motion_behavior": "disable_nonessential_transitions"
+  },
+  "accessibility": {
+    "minimum_focus_width_px": 2,
+    "minimum_touch_target_px": 44,
+    "respect_system_reduced_motion": true,
+    "support_keyboard_navigation": true
+  }
+}
