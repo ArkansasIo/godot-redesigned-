@@ -8,6 +8,7 @@ This repository is a fork of the [Godot Engine](https://github.com/godotengine/g
 - **Default branch:** `master`
 - **Engine version metadata:** see [version.py](version.py)
 - **License:** MIT; see [LICENSE.txt](LICENSE.txt) and [COPYRIGHT.txt](COPYRIGHT.txt)
+- **Project module:** `modules/redesign/`
 
 This README describes the fork and its contribution workflow. It does not imply that custom engine changes or release binaries have been validated.
 
@@ -28,14 +29,28 @@ scons platform=linuxbsd target=editor
 
 The example command is for Linux/BSD environments; platform names and prerequisites differ. Build output is normally written beneath `bin/`, which is ignored by Git.
 
+## Redesign module
+
+The first engine-side redesign layer is a small `redesign` module containing the `RedesignConfig` resource. It provides a configuration boundary for future editor/UI work without replacing Godot's theme or rendering systems.
+
+See:
+
+- [Module README](modules/redesign/README.md)
+- [Module API](project_docs/REDESIGN_MODULE.md)
+- [Design tokens](modules/redesign/design_tokens.json)
+- [UML architecture](project_docs/REDESIGN_MODULE.uml)
+- [Standalone example](redesign_examples/)
+
 ## Repository areas
 
 | Path | Purpose |
 | --- | --- |
-| `.github/workflows/` | Upstream platform build and static-check workflows |
+| `.github/workflows/` | Build, static-check, and project-site workflows |
 | `core/`, `servers/`, `scene/`, `editor/` | Engine implementation |
 | `platform/` | Platform-specific code and integrations |
-| `modules/` | Engine modules |
+| `modules/` | Engine modules, including project-specific redesign code |
+| `redesign_examples/` | Standalone example project |
+| `project_docs/` | Fork-specific architecture and engineering documentation |
 | `tests/` | Automated tests and test data |
 | `thirdparty/` | Third-party dependencies and their license notices |
 | `doc/` | Engine documentation sources |
@@ -50,7 +65,7 @@ The example command is for Linux/BSD environments; platform names and prerequisi
 
 ## GitHub Pages
 
-The engine source repository is not itself a deployable website. If GitHub Pages is enabled for this repository, publish a separate project overview from a dedicated folder or branch rather than attempting to render the C++ source tree as a site. Keep engine builds and web-site deployment as separate workflows.
+The project site lives under `docs/` and is deployed by `.github/workflows/project-pages.yml`. Engine builds and website deployment are intentionally separate workflows.
 
 ## Upstream resources
 
