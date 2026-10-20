@@ -1,0 +1,19 @@
+; Godot Redesigned example project
+; This example is intentionally separate from the engine source tree.
+
+[application]
+config/name="Godot Redesigned Example"
+run/main_scene="res://main.tscn"
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+
+[gui]
+theme/default_font_multichannel_signed_distance_field=true
