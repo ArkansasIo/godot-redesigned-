@@ -1,0 +1,43 @@
+name: Redesign Validation
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "modules/redesign/**"
+      - "redesign_examples/**"
+      - "project_docs/REDESIGN_MODULE.*"
+      - "misc/scripts/validate_redesign_module.py"
+      - ".github/workflows/redesign-validation.yml"
+  pull_request:
+    paths:
+      - "modules/redesign/**"
+      - "redesign_examples/**"
+      - "project_docs/REDESIGN_MODULE.*"
+      - "misc/scripts/validate_redesign_module.py"
+      - ".github/workflows/redesign-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate redesign module layout
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate module
+        run: python3 misc/scripts/validate_redesign_module.py
+
+      - name: Validate example script syntax
+        run: python3 - <<'PY'
+        from pathlib import Path
+        script = Path('redesign_examples/main.gd').read_text(encoding='utf-8')
+        assert 'extends Control' in script
+        assert 'func _ready' in script
+        assert 'func _toggle_compact_mode' in script
+        print('Example script structural checks passed.')
+        PY
