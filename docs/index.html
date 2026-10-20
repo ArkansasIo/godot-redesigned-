@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101821">
-  <meta name="description" content="Project overview, development resources, and roadmap for the Godot Redesigned engine fork.">
-  <title>Godot Redesigned — Project Hub</title>
+  <meta name="description" content="Godot Redesigned full engine architecture, systems, tools, documentation, and development hub.">
+  <title>Godot Redesigned — Full Engine Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +16,10 @@
     </a>
     <nav aria-label="Main navigation">
       <a href="#overview">Overview</a>
-      <a href="#architecture">Architecture</a>
+      <a href="#engine">Engine</a>
+      <a href="#systems">Systems</a>
+      <a href="#editor">Editor</a>
+      <a href="#platforms">Platforms</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#resources">Resources</a>
     </nav>
@@ -24,72 +27,156 @@
 
   <main id="top">
     <section class="hero">
-      <p class="eyebrow">OPEN-SOURCE ENGINE FORK</p>
-      <h1>Build boldly.<br><span>Design deliberately.</span></h1>
-      <p class="hero-copy">A focused project hub for documenting, planning, and validating redesign work built on the Godot Engine source tree.</p>
+      <p class="eyebrow">FULL ENGINE ARCHITECTURE</p>
+      <h1>One hub for the<br><span>entire engine.</span></h1>
+      <p class="hero-copy">A complete documentation and navigation layer for the Godot Redesigned source tree: runtime, rendering, scene systems, editor, platform backends, scripting, networking, audio, physics, tests, modules, and redesign components.</p>
       <div class="hero-actions">
-        <a class="button primary" href="https://github.com/ArkansasIo/godot-redesigned-">View repository <span aria-hidden="true">↗</span></a>
-        <a class="button secondary" href="https://docs.godotengine.org/en/latest/engine_details/development/compiling/">Build guide</a>
+        <a class="button primary" href="https://github.com/ArkansasIo/godot-redesigned-">Open source tree <span aria-hidden="true">↗</span></a>
+        <a class="button secondary" href="#engine">Explore engine</a>
       </div>
-      <p class="notice">This site is project documentation, not an official Godot Engine site or a downloadable engine release.</p>
+      <p class="notice">This page documents the repository architecture. It does not claim that every proposed redesign feature is already implemented or that the browser can run the native Godot editor.</p>
     </section>
 
     <section id="overview" class="section">
       <div class="section-heading">
-        <p class="eyebrow">01 / OVERVIEW</p>
-        <h2>A source-first approach</h2>
-        <p>Keep changes traceable, builds reproducible, and redesign decisions understandable.</p>
+        <p class="eyebrow">01 / ENGINE OVERVIEW</p>
+        <h2>From source tree to engine runtime</h2>
+        <p>The repository remains a full Godot Engine source tree, with the redesign work organized as an additional project-specific layer.</p>
       </div>
       <div class="card-grid">
-        <article class="info-card"><span class="number">01</span><h3>Upstream aware</h3><p>Track the origin of changes and keep divergence intentional and reviewable.</p></article>
-        <article class="info-card"><span class="number">02</span><h3>Testable by design</h3><p>Pair behavior changes with regression coverage and clear evidence.</p></article>
-        <article class="info-card"><span class="number">03</span><h3>Cross-platform minded</h3><p>Consider input, display scaling, rendering, and platform differences early.</p></article>
+        <article class="info-card"><span class="number">RUNTIME</span><h3>Core engine</h3><p>Object model, memory, variants, resources, scenes, servers, scripting, threading, OS abstraction, and engine lifecycle.</p></article>
+        <article class="info-card"><span class="number">TOOLS</span><h3>Editor</h3><p>Project management, inspectors, scene editing, import pipelines, debugger, animation, scripting, visual tools, and editor plugins.</p></article>
+        <article class="info-card"><span class="number">CONTENT</span><h3>Asset pipeline</h3><p>Resource importers, loaders, exporters, shaders, meshes, textures, audio, scenes, scripts, and project configuration.</p></article>
+        <article class="info-card"><span class="number">SERVICES</span><h3>Engine servers</h3><p>Rendering, physics, audio, navigation, XR, multiplayer, text, input, and other runtime service interfaces.</p></article>
+        <article class="info-card"><span class="number">TARGETS</span><h3>Platform layer</h3><p>Desktop, mobile, web, console-oriented abstractions, display, input, filesystem, networking, and platform-specific integrations.</p></article>
+        <article class="info-card"><span class="number">EXTENSION</span><h3>Redesign module</h3><p>Project-specific configuration, design tokens, accessibility preferences, documentation, examples, and validation under <code>modules/redesign/</code>.</p></article>
       </div>
     </section>
 
-    <section id="architecture" class="section architecture">
+    <section id="engine" class="section architecture">
       <div class="section-heading">
-        <p class="eyebrow">02 / ARCHITECTURE</p>
-        <h2>Map the engine layers</h2>
-        <p>Use the established project structure to understand where changes belong.</p>
+        <p class="eyebrow">02 / ENGINE LAYERS</p>
+        <h2>Navigate the full source architecture</h2>
+        <p>Use the repository paths as the primary map into the engine. The labels below describe the major responsibilities rather than replacing upstream source organization.</p>
       </div>
       <div class="architecture-list">
-        <div><code>core/</code><span>Foundation types and runtime utilities</span></div>
-        <div><code>scene/</code><span>Nodes, scenes, and gameplay-facing systems</span></div>
-        <div><code>editor/</code><span>Authoring interface and editor tools</span></div>
-        <div><code>servers/</code><span>Rendering and engine services</span></div>
-        <div><code>platform/</code><span>Platform-specific integrations</span></div>
-        <div><code>tests/</code><span>Automated regression coverage</span></div>
+        <div><code>core/</code><span>Foundational data types, object system, containers, math, Variant, resources, utilities, threading, and engine primitives.</span></div>
+        <div><code>scene/</code><span>Node and scene runtime, GUI controls, animation, 2D, 3D, resources, main loop integration, and gameplay-facing APIs.</span></div>
+        <div><code>servers/</code><span>Rendering, physics, audio, navigation, text, XR, and other service interfaces used by the runtime.</span></div>
+        <div><code>editor/</code><span>Godot's native authoring environment, docks, inspectors, scene tools, import UI, debugger, scripting tools, and plugins.</span></div>
+        <div><code>platform/</code><span>Operating-system and device integrations including display, input, filesystem, process control, networking, and platform services.</span></div>
+        <div><code>modules/</code><span>Optional and integrated engine modules, including the project-specific <code>redesign</code> module.</span></div>
+        <div><code>drivers/</code><span>Low-level rendering, audio, input, network, and other hardware-facing driver implementations.</span></div>
+        <div><code>thirdparty/</code><span>Bundled third-party libraries and dependencies used by the engine.</span></div>
+        <div><code>tests/</code><span>Engine and subsystem regression tests, validation infrastructure, and test data.</span></div>
+        <div><code>misc/</code><span>Build scripts, developer utilities, CI helpers, documentation tooling, and supporting project infrastructure.</span></div>
       </div>
-      <p class="text-link"><a href="../project_docs/ARCHITECTURE.md">Read architecture notes →</a></p>
+      <p class="text-link"><a href="../project_docs/ARCHITECTURE.md">Read detailed architecture notes →</a></p>
+    </section>
+
+    <section id="systems" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">03 / ENGINE SYSTEMS</p>
+        <h2>Subsystem map</h2>
+        <p>Each group represents a major engine capability that can be documented, tested, and redesigned independently.</p>
+      </div>
+      <div class="system-grid">
+        <article><span>01</span><h3>Scene &amp; Node</h3><p>SceneTree, Node lifecycle, resources, signals, groups, instancing, ownership, and serialization.</p></article>
+        <article><span>02</span><h3>Rendering</h3><p>RenderingServer, renderer backends, textures, meshes, materials, shaders, lighting, cameras, 2D and 3D.</p></article>
+        <article><span>03</span><h3>Physics</h3><p>2D and 3D physics servers, bodies, shapes, collision layers, queries, joints, and physics integration.</p></article>
+        <article><span>04</span><h3>Audio</h3><p>AudioServer, buses, streams, effects, playback, spatial audio, device output, and audio import.</p></article>
+        <article><span>05</span><h3>Input</h3><p>Keyboard, mouse, gamepad, touch, sensors, actions, input maps, and platform-specific events.</p></article>
+        <article><span>06</span><h3>Navigation</h3><p>NavigationServer, maps, regions, meshes, agents, links, path queries, and navigation debugging.</p></article>
+        <article><span>07</span><h3>Scripting</h3><p>GDScript, C# integration where supported, scripting APIs, language bindings, debugging, and script resources.</p></article>
+        <article><span>08</span><h3>Networking</h3><p>Multiplayer APIs, peers, RPC, synchronization, ENet and other transport abstractions, and network debugging.</p></article>
+        <article><span>09</span><h3>Animation</h3><p>AnimationPlayer, AnimationTree, tracks, blending, state machines, skeletons, and animation tooling.</p></article>
+        <article><span>10</span><h3>GUI</h3><p>Control nodes, themes, fonts, layout, accessibility, input routing, popups, containers, and editor UI foundations.</p></article>
+        <article><span>11</span><h3>Resources</h3><p>Resource loading, caching, serialization, importers, project settings, configuration, and asset dependencies.</p></article>
+        <article><span>12</span><h3>XR &amp; Devices</h3><p>XR abstractions, headsets, controllers, spatial tracking, mobile sensors, displays, and device integrations.</p></article>
+      </div>
+    </section>
+
+    <section id="editor" class="section architecture">
+      <div class="section-heading">
+        <p class="eyebrow">04 / EDITOR</p>
+        <h2>Authoring environment</h2>
+        <p>The GitHub Pages site now exposes the editor as a first-class engine layer, while the native editor continues to live in the repository's editor source tree.</p>
+      </div>
+      <div class="card-grid">
+        <article class="info-card"><span class="number">WORKSPACE</span><h3>Scene editor</h3><p>Scene tree, viewport, node creation, transforms, 2D/3D authoring, and scene inspection.</p></article>
+        <article class="info-card"><span class="number">INSPECT</span><h3>Inspector</h3><p>Properties, resources, metadata, categories, editing controls, and redesign-oriented presentation opportunities.</p></article>
+        <article class="info-card"><span class="number">PROJECT</span><h3>Project manager</h3><p>Project discovery, creation, import, run configuration, export presets, and project settings.</p></article>
+        <article class="info-card"><span class="number">DEBUG</span><h3>Debugger</h3><p>Errors, breakpoints, stack traces, profiler data, remote scene inspection, and runtime diagnostics.</p></article>
+        <article class="info-card"><span class="number">ASSETS</span><h3>FileSystem &amp; import</h3><p>Asset browsing, file changes, import pipelines, previews, metadata, and resource dependencies.</p></article>
+        <article class="info-card"><span class="number">EXTEND</span><h3>Editor plugins</h3><p>Custom docks, inspectors, tools, menus, commands, and project-specific authoring workflows.</p></article>
+      </div>
+      <p class="text-link"><a href="https://github.com/ArkansasIo/godot-redesigned-/tree/master/editor">Browse editor source ↗</a></p>
+    </section>
+
+    <section id="platforms" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">05 / PLATFORMS</p>
+        <h2>Engine targets and build surface</h2>
+        <p>The source tree separates platform-independent engine code from target-specific implementations.</p>
+      </div>
+      <div class="platform-grid">
+        <article><h3>Desktop</h3><p>Windows, Linux, and macOS-oriented platform services, rendering, input, filesystem, and native windowing.</p></article>
+        <article><h3>Mobile</h3><p>Android and iOS-oriented lifecycle, input, sensors, display, rendering, and device services.</p></article>
+        <article><h3>Web</h3><p>Web export architecture, browser constraints, WebAssembly-related runtime concerns, and web platform integration.</p></article>
+        <article><h3>Dedicated builds</h3><p>Headless/server-oriented builds for multiplayer backends, automation, CI, and resource-constrained deployment.</p></article>
+      </div>
+      <p class="text-link"><a href="https://github.com/ArkansasIo/godot-redesigned-/tree/master/platform">Browse platform source ↗</a></p>
+    </section>
+
+    <section id="redesign" class="section architecture">
+      <div class="section-heading">
+        <p class="eyebrow">06 / REDESIGN LAYER</p>
+        <h2>Project-specific engine customization</h2>
+        <p>The redesign module provides a small, isolated foundation for visual and accessibility configuration without duplicating the entire upstream engine.</p>
+      </div>
+      <div class="architecture-list">
+        <div><code>RedesignConfig</code><span>Runtime Resource for high contrast, compact mode, reduced motion, accent color, and UI density.</span></div>
+        <div><code>design_tokens.json</code><span>Centralized color, spacing, radius, motion, and accessibility tokens for the redesign system.</span></div>
+        <div><code>register_types.cpp</code><span>Engine module registration point for exposing redesign classes to the Godot runtime.</span></div>
+        <div><code>redesign_examples/</code><span>Small standalone project demonstrating the configuration concept outside the full editor.</span></div>
+      </div>
+      <p class="text-link"><a href="../project_docs/REDESIGN_MODULE.md">Read redesign module documentation →</a></p>
     </section>
 
     <section id="roadmap" class="section">
       <div class="section-heading">
-        <p class="eyebrow">03 / ROADMAP</p>
-        <h2>Improve in measured steps</h2>
-        <p>These phases are proposed work, not a claim that the features have shipped.</p>
+        <p class="eyebrow">07 / ROADMAP</p>
+        <h2>Build the redesign in layers</h2>
+        <p>Proposed work is separated from existing engine capabilities so the page remains an accurate engineering map.</p>
       </div>
       <div class="timeline">
-        <article><span>PHASE 01</span><h3>Baseline</h3><p>Document the upstream base, toolchain, and current build/test status.</p></article>
-        <article><span>PHASE 02</span><h3>Design system</h3><p>Define UX goals, accessibility requirements, tokens, and validation criteria.</p></article>
-        <article><span>PHASE 03</span><h3>Implementation</h3><p>Deliver isolated patches with regression tests and performance measurements.</p></article>
-        <article><span>PHASE 04</span><h3>Release readiness</h3><p>Validate platforms, licensing, documentation, and reproducible artifacts.</p></article>
+        <article><span>PHASE 01</span><h3>Engine baseline</h3><p>Keep the upstream engine buildable and document current platform/toolchain status.</p></article>
+        <article><span>PHASE 02</span><h3>Design system</h3><p>Expand tokens, accessibility controls, theme resources, layout rules, and reusable editor patterns.</p></article>
+        <article><span>PHASE 03</span><h3>Editor redesign</h3><p>Apply the design system to docks, inspector, project manager, menus, toolbars, and authoring workflows.</p></article>
+        <article><span>PHASE 04</span><h3>Runtime UX</h3><p>Extend accessibility, UI defaults, input behavior, diagnostics, and project-facing runtime presentation.</p></article>
+        <article><span>PHASE 05</span><h3>Validation</h3><p>Run regression, compatibility, performance, accessibility, and platform validation across supported targets.</p></article>
+        <article><span>PHASE 06</span><h3>Release readiness</h3><p>Document licensing, source provenance, reproducible builds, artifacts, versioning, and release procedures.</p></article>
       </div>
       <p class="text-link"><a href="../project_docs/ROADMAP.md">Open full roadmap →</a></p>
     </section>
 
     <section id="resources" class="section resources">
       <div class="section-heading">
-        <p class="eyebrow">04 / RESOURCES</p>
-        <h2>Start with trusted references</h2>
-        <p>Build and contribution guidance should come from the current upstream documentation.</p>
+        <p class="eyebrow">08 / RESOURCES</p>
+        <h2>Go from the page to the source</h2>
+        <p>Use these entry points to inspect the complete engine, redesign module, and engineering documentation.</p>
       </div>
       <div class="resource-links">
-        <a href="https://github.com/ArkansasIo/godot-redesigned-"><span>Repository</span><strong>Source, issues, and changes ↗</strong></a>
-        <a href="https://docs.godotengine.org/en/latest/engine_details/development/compiling/"><span>Build instructions</span><strong>Official compiling guide ↗</strong></a>
-        <a href="https://docs.godotengine.org/"><span>Documentation</span><strong>Godot documentation ↗</strong></a>
-        <a href="../project_docs/TESTING.md"><span>Quality</span><strong>Testing strategy →</strong></a>
+        <a href="https://github.com/ArkansasIo/godot-redesigned-"><span>Full repository</span><strong>Entire Godot source tree ↗</strong></a>
+        <a href="https://github.com/ArkansasIo/godot-redesigned-/tree/master/core"><span>Core</span><strong>Runtime foundations ↗</strong></a>
+        <a href="https://github.com/ArkansasIo/godot-redesigned-/tree/master/scene"><span>Scene</span><strong>Nodes and scene systems ↗</strong></a>
+        <a href="https://github.com/ArkansasIo/godot-redesigned-/tree/master/servers"><span>Servers</span><strong>Rendering, physics, audio and services ↗</strong></a>
+        <a href="https://github.com/ArkansasIo/godot-redesigned-/tree/master/editor"><span>Editor</span><strong>Native authoring environment ↗</strong></a>
+        <a href="https://github.com/ArkansasIo/godot-redesigned-/tree/master/platform"><span>Platform</span><strong>Target integrations ↗</strong></a>
+        <a href="https://github.com/ArkansasIo/godot-redesigned-/tree/master/modules"><span>Modules</span><strong>Engine extension layer ↗</strong></a>
+        <a href="../project_docs/TESTING.md"><span>Quality</span><strong>Testing and validation strategy →</strong></a>
+        <a href="https://docs.godotengine.org/en/latest/engine_details/development/compiling/"><span>Build</span><strong>Official compiling guide ↗</strong></a>
+        <a href="https://docs.godotengine.org/"><span>Upstream docs</span><strong>Godot documentation ↗</strong></a>
       </div>
     </section>
   </main>
