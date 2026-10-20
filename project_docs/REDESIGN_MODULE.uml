@@ -1,0 +1,32 @@
+@startuml
+skinparam componentStyle rectangle
+skinparam backgroundColor #0B1118
+skinparam component {
+  BackgroundColor #121C26
+  BorderColor #65D7D0
+  FontColor #EDF4FA
+}
+
+component "Godot Engine" as engine
+component "redesign module" as module
+class RedesignConfig {
+  +high_contrast: bool
+  +compact_mode: bool
+  +reduced_motion: bool
+  +accent_color: Color
+  +density: String
+  +to_dictionary(): Dictionary
+  +from_dictionary(data): Error
+}
+component "Future Editor/UI Consumers" as ui
+
+engine --> module : initializes
+module --> RedesignConfig : registers
+ui --> RedesignConfig : reads configuration
+
+note right of module
+Configuration boundary only.
+No renderer replacement.
+No ThemeDB replacement.
+end note
+@enduml
